@@ -56,3 +56,4 @@ except:
     # Retorna menssagem de erro caso usuario digite algo que não seja um número
     print('')
     print('Por favor digite apenas numeros !')
+    print('')
