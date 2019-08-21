@@ -23,5 +23,32 @@ arq2.close()
 
 # Abrir o arquivo para escrita "append", acrescentar
 arq2 = open('arquivos/arquivo1.txt', 'a')
-arq2.write('Acrescentando conteúdo')
+arq2.write(' Acrescentando conteúdo')
 arq2.close()
+
+# Outro Exemplo
+
+# name = input('entre com o nome do arquivo: ')
+
+# filename = name + '.txt'
+
+# arq3= open(filename, 'w')
+# arq3.write('Informação no arquivo')
+
+# arq3.close()
+
+arq3 = open('arquivos/arquivo1.txt', 'r')
+
+print(arq3.read())
+arq3.seek(0)
+print(arq3.readlines())
+
+arq3.close()
+
+# Utilizando for
+
+arq3 = open('arquivos/arquivo1.txt', 'r')
+
+for line in arq3:
+    print(line)
+
