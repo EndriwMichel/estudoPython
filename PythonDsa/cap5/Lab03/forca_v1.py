@@ -1,5 +1,5 @@
 # Lab03, exercicio de desenvolimento de uma forca utilizando python POO
-import random
+import random 
 import dicas
 
 # Tabuleiro
