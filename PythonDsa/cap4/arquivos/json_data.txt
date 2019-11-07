@@ -1,1 +1,0 @@
-{"nome": "Guido Van Rossum", "linguagem": "Python", "similar": ["c", "modula-3", "lisp"], "users": 10000000}
