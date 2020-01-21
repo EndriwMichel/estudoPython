@@ -1,5 +1,6 @@
 # Pandas Dataframes
 from pandas import DataFrame
+import numpy as np
 
 # Cria a lista de valores
 data = {
@@ -49,3 +50,48 @@ print('')
 # Slicing em Dataframe
 print('Slicing de Dataframe')
 print(frame2[:2])
+print('')
+
+# Preenchendo os valores null (NaN) da coluna débito
+print('Preenchendo os valores null (NaN) da coluna débito')
+frame2['Débito'] = np.arange(5.) 
+print(frame2)
+print('')
+print('Verificando os valores em formato de array')
+print(frame2.values)
+print('')
+
+# método describle para retornar estatisticas sobre o dataframe
+print('Resumo estatistico sobre DataFrame')
+print(frame2.describe())
+print('')
+
+# Slicing em DataFrame
+print('Slicing em DataFrame')
+print(frame2['dois':'quatro'])
+print('')
+
+# Localizando registros dentro do DataFrame
+print('Localizando registros dentro do DataFrame')
+print(frame2.loc['quatro'])
+print('')
+print('Busca pelo index')
+print(frame2.iloc[2])
+print('')
+
+# Invertendo colunas em indices
+print('Invertendo colunas em indices')
+web_stats = {'Dias':[1, 2, 3, 4, 5, 6, 7],
+            'Visitantes':[45, 23, 67, 68, 23, 12, 14],
+            'Taxas':[11, 22, 33, 44, 55, 66, 77]}
+
+df_web = DataFrame(web_stats)
+
+print(df_web)
+print('')
+
+print('Transformando a coluna Dias em um index')
+print(df_web.set_index('Dias'))
+print(df_web.head)
+print('')
+print(df_web['Visitantes'])
