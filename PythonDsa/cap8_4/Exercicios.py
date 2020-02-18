@@ -33,7 +33,11 @@ print('')
 # Crie um array de 10 elementos
 # Altere o valores de todos os elementos dos índices 5 a 8 para 0
 np_arr2 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# print(np.where(np_arr2 >= 5, np.where(np_arr2 <= 8, 0, np_arr2), np_arr2))
+print(np.where(np_arr2 >= 5, np.where(np_arr2 <= 8, 0, np_arr2), np_arr2))
+# Segunda alternativa
+# np_arr2[5:8] = 0
+# print(np_arr2)
+
 
 # Exercicio 3
 # Crie um array de 3 dimensões e imprima a dimensão 1
@@ -79,8 +83,8 @@ for x in range(0, len(cond)):
 # Considerando a série abaixo, imprima os valores únicos na série
 import pandas as pd
 obj = pd.Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c', 'a', 'b'])
-
 # print(obj[obj.duplicated(keep=False) == False])
+# Resposta correta: obj.unique()
 
 # Exercicio 9
 # Considerando o trecho de código que conecta em uma url na internet, imprima o dataframe conforme abaixo.
