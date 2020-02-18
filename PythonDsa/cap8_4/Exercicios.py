@@ -1,5 +1,33 @@
 # Exercicios Python capitulo 8
 import numpy as np
+# Exercicio 1
+# Crie um array NumPy com 1000000 e uma lista com 1000000.
+# Multiplique cada elemento do array e da lista por 2 e calcule o tempo de execução com cada um dos objetos (use %time).
+# Qual objeto oferece melhor performance, array NumPy ou lista?
+
+import numpy as np
+import time
+
+list_arr = []
+np_arr = np.arange(0, 1000000)
+
+list_arr.extend(range(0, 1000000))
+
+def returnNumpyPerform(np_list):
+    start = time.time()
+    new_np_arr = np.multiply(np_list, 2)    
+    return print('numpy: ', time.time() - start)
+
+def returnListPerfomr(list_list):
+    start = time.time()
+    new_list_arr = [x * 2 for x in list_list]
+    return print('list: ', time.time() - start)
+
+returnNumpyPerform(np_arr)
+returnListPerfomr(list_arr)
+
+print('R: Numpy tem melhor performance')
+print('')
 
 # Exercicio 2
 # Crie um array de 10 elementos
@@ -63,8 +91,35 @@ resp = requests.get(url)
 resp_j = json.loads(resp.content)
 
 df = pd.DataFrame(resp_j)
-print(df.columns)
+# print(df.columns)
 
-# Exercicio 9
+# Exercicio 10
 # Crie um banco de dados no SQLite, crie uma tabela, insira registros, 
 # consulte a tabela e retorne os dados em dataframe do Pandas
+import sqlite3
+
+def connect(file):
+    return sqlite3.connect(file)
+
+def insertCarros(con, carros_list):
+    cursor = con.cursor()
+    cursor.execute('DELETE FROM carros')    
+    q_result = cursor.executemany('INSERT INTO carros (marca, nome_modelo, ano) VALUES (?, ?, ?)', carros_list)
+
+    return q_result
+
+carros = (
+    ['Toyota', 'Corola', 2019],
+    ['GM', 'Onyx', 2017],
+    ['Honda', 'Fit', 2018],
+    ['Honda', 'Civic', 2020],
+    ['Fiat', 'Strada', 2015]
+)
+
+con = connect('db_carros.db')
+result = insertCarros(con, carros)
+
+sql_df = pd.read_sql_query('SELECT * FROM carros', con)
+print(sql_df)
+
+con.close()
