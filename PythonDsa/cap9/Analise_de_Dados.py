@@ -1,4 +1,4 @@
-# Capitulo 9 Analise de dados
+# Capitulo 9 Analise de dados, Analise Exploratória 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -146,5 +146,30 @@ plt.plot(x, m*x + b, '-', color='red')
 plt.xlabel('Idade')
 plt.ylabel('Horas de treinamento')
 plt.title('Idade por horas de treinamento')
+plt.show()
+"""
+
+# Qual a relação entre investimento em capacitação e expectativa salarial
+# A medida que o investimento aumenta a expectativa salarial aumenta
+"""
+import warnings 
+warnings.filterwarnings('ignore')
+
+# criando subset dos dados
+df5 = df.copy()
+df5 = df5.dropna(subset=['ExpectedEarning'])
+df5 = df5[df['MoneyForLearning'].isin(range(0, 60000))]
+
+# Difinindo x e y
+x = df5.MoneyForLearning
+y = df5.ExpectedEarning
+
+# Criando o gráfico
+m, b = np.polyfit(x ,y, 1)
+plt.plot(x, y, '.')
+plt.plot(x, m*x + b, '-', color='red')
+plt.xlabel('Investimento em treinamento')
+plt.ylabel('Expectativa salarial')
+plt.title('Investimento em treinamento x Expectativa salarial')
 plt.show()
 """
