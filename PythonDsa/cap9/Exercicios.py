@@ -1,4 +1,4 @@
-# Imports
+""" Imports """
 import time
 import numpy as np
 import pandas as pd
@@ -8,30 +8,113 @@ from sklearn.datasets import load_iris
 fontsize = 14
 ticklabelsize = 14
 
-# Carregando o dataset
+print('======= Extração e Transformação de Dados =======')
+""" Carregando o dataset """
 iris = load_iris()
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
 # print(len(df))
-print(df.head())
+# print(df.head())
 
-# Imprima os valores numéricos da Variável target (o que queremos prever), 
-# uma de 3 possíveis categorias de plantas: setosa, versicolor ou virginica
-print(iris.target_names)
+""" 
+Imprima os valores numéricos da Variável target (o que queremos prever), 
+uma de 3 possíveis categorias de plantas: setosa, versicolor ou virginica 
+"""
+# print(iris.target_names)
 
-# Imprima os valores numéricos da Variável target (o que queremos prever), 
-# uma de 3 possíveis categorias de plantas: 0, 1 ou 2
-print(iris.target)
+""" 
+Imprima os valores numéricos da Variável target (o que queremos prever), 
+uma de 3 possíveis categorias de plantas: 0, 1 ou 2 
+"""
+# print(iris.target)
 
-# Adicione ao dataset uma nova coluna com os nomes das espécies, pois é isso que vamos tentar prever (variável target)
-df.insert(4, 'SVV', None)
+""" 
+Adicione ao dataset uma nova coluna com os nomes das espécies, pois é isso que vamos tentar prever (variável target)
+"""
+df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
+# print(df.head())
 
-# Inclua no dataset uma coluna com os valores numéricos da variável target
-df_species = df.copy()
-species = iris.target
+""" 
+Inclua no dataset uma coluna com os valores numéricos da variável target
+"""
+df['target'] = iris.target
+# print(df.head())
 
-df_species['target'] = species
+""" 
+Extraia as features (atributos) do dataset e imprima
+"""
+# print(df.columns)
 
-# Extraia as features (atributos) do dataset e imprima
-print(df_species)
+"""
+Calcule a média de cada feature para as 3 classes
+"""
+# print(df.groupby('target').mean())
 
-# Calcule a média de cada feature para as 3 classes
+print('')
+print('======= Exploração de Dados =======')
+print('')
+
+"""
+Imprima uma Transposta do dataset (transforme linhas e colunas e colunas em linhas)
+"""
+# print(df.transpose().T)
+
+"""
+Utilize a função Info do dataset para obter um resumo sobre o dataset
+"""
+# print(df.info())
+
+"""
+Faça um resumo estatístico do dataset
+"""
+# print(df.describe())
+
+"""
+Verifique se existem valores nulos no dataset
+"""
+# print(df.isnull().values.any())
+# alterativa
+# print(df.isnull().sum())
+
+"""
+Faça uma contagem de valores de sepal length
+"""
+# print(df['sepal length (cm)'].value_counts())
+
+print('')
+print('======= Plot =======')
+print('')
+
+"""
+Crie um Histograma de sepal length
+"""
+# df['sepal length (cm)'].hist()
+# plt.show()
+
+"""
+Crie um Gráficos de Dispersão (scatter Plot) da variável sepal length versus número da linha, 
+colorido por marcadores da variável target
+"""
+# plt.scatter(
+#     df['sepal length (cm)'],
+#     [x for x in range(0, len(df['sepal length (cm)']))],
+#     # c=df['target']
+#     c=[x for x in range(0, len(df['sepal length (cm)']))]
+# )
+# plt.show()
+
+"""
+Crie um Scatter Plot de 2 Features (atributos)
+"""
+# plt.scatter(
+#     df['sepal length (cm)'],
+#     df['species'],
+#     c=df['target']
+# )
+# plt.xlabel('sepal length (cm)')
+# plt.ylabel('species')
+# plt.title('sepal length (cm) x species')
+# plt.show()
+
+"""
+Crie um Scatter Matrix das Features (atributos)
+"""
