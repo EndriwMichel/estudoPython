@@ -2,6 +2,7 @@
 import time
 import numpy as np
 import pandas as pd
+from pandas.plotting import scatter_matrix
 from matplotlib import pyplot as plt
 from sklearn.datasets import load_iris
 
@@ -118,3 +119,13 @@ Crie um Scatter Plot de 2 Features (atributos)
 """
 Crie um Scatter Matrix das Features (atributos)
 """
+# attributes = ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+# scatter_matrix(df[attributes], alpha=0.2, figsize=(12, 9))
+# plt.show()
+
+
+"""
+Crie um Histograma de todas as features
+"""
+# df.hist(figsize=(8, 8))
+# plt.show()

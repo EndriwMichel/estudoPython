@@ -102,10 +102,12 @@ celerybeat-schedule
 # mypy
 .mypy_cache/
 .dmypy.json
+.zip
 dmypy.json
 
 # Pyre type checker
 .pyre/
 .DS_Store
+autos.zip
 
 # End of https://www.gitignore.io/api/python
