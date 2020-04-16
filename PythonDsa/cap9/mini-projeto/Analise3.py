@@ -34,6 +34,7 @@ Crie um Barplot com o Preço médio do veículo por tipo de combustível e tipo 
 # )
 
 # ax = new_df.plot.bar()
+plt.title('Preço médio do veículo por tipo de combustível e tipo de caixa de câmbio')
 # plt.show()
 
 
@@ -57,4 +58,5 @@ new_df = pd.DataFrame(
 )
 
 ax = new_df.plot.bar()
+plt.title('Potência média de um veículo por tipo de veículo e tipo de caixa de câmbio')
 plt.show()
