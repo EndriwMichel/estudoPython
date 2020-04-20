@@ -1,4 +1,4 @@
-# Operações matematicas com tensor flow
+# Operações matematicas com tensor flow - adição
 import tensorflow.compat.v1 as tf
 
 tf.compat.v1.disable_eager_execution()
